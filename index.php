@@ -1,4 +1,7 @@
 <?php
+define('ROOT_PATH', __DIR__ . '/');
+require_once ROOT_PATH."/config/constants.php";
+
     /*require_once __DIR__ . "/controllers/ProvinceController.php";
     require_once __DIR__ . "/controllers/UserController.php";
     require_once __DIR__ . "/controllers/AuthController.php";
@@ -33,8 +36,7 @@
             break;
         case "login":
         default:
-            
-            require 'views/login.php';
+            require ROOT_PATH.'views/auth/login.php';
             break;
     }
 ?>

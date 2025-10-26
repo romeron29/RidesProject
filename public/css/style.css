@@ -1,0 +1,49 @@
+body{
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+}
+button{
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.btn-remove {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+.btn-disable {
+background-color: #e7e7e7; /* Gray */
+    color: black;
+}
+.btn-edit {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+.bth-create {
+    background-color: #008CBA; /* Blue */
+    color: white;
+}
+a{
+    text-decoration: none;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 800;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+}
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
