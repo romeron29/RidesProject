@@ -10,22 +10,23 @@
 
         public function validateUser() {
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $username = trim($_POST['username']);
-                $password = trim($_POST['password']);
+                $correo = trim($_POST['correo']);
+                $contrasenna = trim($_POST['contrasenna']);
                 $userModel = new UserModel($this->db_conn);
-                $user = $userModel->getUserByCredentials($username);
-                if ($user && password_verify($password, $user['user_password'])) {
-                    if (($user['user_role'] == 'admin' || $user['user_role'] == 'user') && $user['user_status'] != 'active') {
-                        $error = "Your account is not active. Please contact the administrator.";
+                $user = $userModel->getUserByCredentials($correo);
+                if ($user && password_verify($contrasenna, $user['contrasenna'])) {
+                    if (($user['tipo_usuario'] == 'chofer' || $user['tipo_usuario'] == 'pasajero' || $user['tipo_usuario'] == 'administrador') && $user['estado'] != 'activo') {
+                        $error = "Su cuenta se encuentra en estado: pendiente o inactivo.";
                         require 'views/Login.php';
                         exit();
                     }else if (($user['user_role'] == 'admin' || $user['user_role'] == 'user') && $user['user_status'] == 'active') {
                         $_SESSION['loggedin'] = true;
-                        $_SESSION['id_user'] = $user['user_id'];
-                        $_SESSION['username'] = $user['username'];
-                        $_SESSION['lastname'] = $user['lastname'];
-                        $_SESSION['user_role'] = $user['user_role'];
-                        $_SESSION['user_status'] = $user['user_status'];
+                        $_SESSION['id_usuario'] = $user['id_usuario'];
+                        $_SESSION['nombre'] = $user['nombre'];
+                        $_SESSION['apellido'] = $user['apellido'];
+                        $SESSION['correo'] = $user['correo'];
+                        $_SESSION['tipo_usuario'] = $user['tipo_usuario'];
+                        $_SESSION['estado'] = $user['estado'];
                         header("Location: index.php?action=list");
                         exit();
                     } else {

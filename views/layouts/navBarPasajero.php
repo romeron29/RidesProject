@@ -8,12 +8,12 @@ if (session_status() === PHP_SESSION_NONE) {
 	<div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
 		<div>
 			<a href="/" style="color:#333;text-decoration:none;font-weight:bold;margin-right:16px;">MiApp</a>
-			<a href="index.php?action=registrocliente" style="color:#333;text-decoration:none;margin-right:12px;">Registrar pasajero</a>
-            <a href="index.php?action=registroconductor" style="color:#333;text-decoration:none;margin-right:12px;">Registrar conductor</a>
+			<a href="index.php?action=registrocliente" style="color:#333;text-decoration:none;margin-right:12px;">Viajes</a>
+            <a href="index.php?action=registroconductor" style="color:#333;text-decoration:none;margin-right:12px;">Reservas</a>
         
 		</div>
 		<div>
-			<a href="?action=login" style="color:#fff;text-decoration:none;background:#3498db;padding:6px 10px;border-radius:4px;">Iniciar sesión</a>
+			<a href="?action=login" style="color:#fff;text-decoration:none;background:#3498db;padding:6px 10px;border-radius:4px;">Salir</a>
 		</div>
 	</div>
 </nav>

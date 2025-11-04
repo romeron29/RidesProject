@@ -1,34 +1,47 @@
 <?php
-define('ROOT_PATH', __DIR__ . '/');
-require_once ROOT_PATH."/config/constants.php";
+define('APP_ROOT', __DIR__ . '/');
+define('ROOT_PATH', 'https://expansively-brightish-eboni.ngrok-free.dev/first_project'.'/');
 
-    /*require_once __DIR__ . "/controllers/ProvinceController.php";
-    require_once __DIR__ . "/controllers/UserController.php";
-    require_once __DIR__ . "/controllers/AuthController.php";
-    require_once __DIR__ . "/config/db.php";*/
+
+require_once __DIR__ . "/config/db.php";
+require_once __DIR__ . "/controllers/UserController.php";
+require_once __DIR__ . "/controllers/AuthController.php";
+$userController = new UserController($db_conn);
+$authController = new AuthController($db_conn);
+
     
     $action = $_GET["action"] ?? "login";
     switch ($action) {
+        case "inicio":
+            require APP_ROOT."views/auth/login.php";
+            break;
         case "save":
+            break;
+        case "registro";
+             require APP_ROOT."views/auth/start.php";
+             break;
+        case "registrocliente":
+            require APP_ROOT."views/auth/register_user.php";
+            break;
+        case "registroconductor":
+            require APP_ROOT."views/auth/register_driver.php";
+            break;
+        case "registrar_pasajero": 
             $userController->saveUser();
             break;
-        case "delete":
-            $userController->deleteUser();
+        case "registrar_chofer": 
+            $userController->saveUser();
             break;
-        case "list":
-            $userController->listUsers();
+        case "activar":
+            $userController->activarCuenta();
             break;
-        case "edit": 
-            $userController->editUser();
+        case "registrar_vehiculo";
+            
             break;
-        case "update": //Save user when this is an update
-            $userController->updateUser();
-            break;
-        case "disable":
-            $userController->disableUser();
+        case "registro_exitoso":     
+            require APP_ROOT."views/auth/registro_exitoso.php";       
             break;
         case "auth":
-            //Validate user credentials
             $authController->validateUser();
             break;
         case "logout":
@@ -36,7 +49,7 @@ require_once ROOT_PATH."/config/constants.php";
             break;
         case "login":
         default:
-            require ROOT_PATH.'views/auth/login.php';
+            require APP_ROOT.'views/auth/login.php';
             break;
     }
 ?>
