@@ -1,19 +1,21 @@
 <?php
+require_once APP_ROOT."config/constants.php";
 if (session_status() === PHP_SESSION_NONE) {
 	session_start();
 }
 // Simple public navbar: for unauthenticated visitors
 ?>
-<nav style="background:#f5f5f5;color:#333;padding:10px 12px;border-bottom:1px solid #e0e0e0;">
-	<div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
-		<div>
-			<a href="/" style="color:#333;text-decoration:none;font-weight:bold;margin-right:16px;">MiApp</a>
-			<a href="index.php?action=registrocliente" style="color:#333;text-decoration:none;margin-right:12px;">Registrar pasajero</a>
-            <a href="index.php?action=registroconductor" style="color:#333;text-decoration:none;margin-right:12px;">Registrar conductor</a>
-        
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>public/css/publicNavBar.css">
+<nav class="navbar">
+	<div class="navbar-container">
+		<a href="index.php" class="navbar-brand">Aventones</a>
+		<div class="navbar-links">
+			<a href="index.php?action=registrocliente" class="btn-register">Registrar pasajero</a>
+			<a href="index.php?action=registroconductor" class="btn-register">Registrar conductor</a>
+			<a href="#viajes" class="btn-register">Ver viajes</a>
 		</div>
-		<div>
-			<a href="?action=login" style="color:#fff;text-decoration:none;background:#3498db;padding:6px 10px;border-radius:4px;">Iniciar sesión</a>
+		<div class="navbar-right">
+			<a href="index.php?action=login" class="btn-login">Iniciar sesión</a>
 		</div>
 	</div>
 </nav>

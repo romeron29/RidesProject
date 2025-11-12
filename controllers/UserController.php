@@ -19,17 +19,18 @@ class UserController {
                 $nombre = trim($_POST['nombre']); $apellido = trim($_POST['apellido']);
                 $cedula = trim($_POST['cedula']); $fecha_nacimiento = trim($_POST['fecha_nacimiento']);
                 $correo = trim($_POST['correo']); $telefono = trim($_POST['telefono']);
-                $fotografia = $this->savePhoto();
+                $fotografia = APP_ROOT.$this->savePhoto();
                 echo 'foto guardada: '.$fotografia;
                 $contrasenna = password_hash(trim($_POST['contrasenna']), PASSWORD_DEFAULT);
                 $tipo_usuario = trim(strtolower($_POST['tipo_usuario']));
                 $data = ['nombre' => $nombre, 'apellido' => $apellido, 'cedula' => $cedula, 'fecha_nacimiento' => $fecha_nacimiento, 'correo' => $correo, 'telefono' => $telefono, 'fotografia' => $fotografia, 'contrasenna' => $contrasenna, 'tipo_usuario' => $tipo_usuario];
                 
                 if($userModel->saveuser($data) == true) {
-                    $mensaje = "Usuario registrado exitosamente. Por favor, revise su correo para activar su cuenta.";
+                    $error = "Usuario registrado exitosamente. Por favor, revise su correo para activar su cuenta.";
                     header("Location: index.php?action=registro_exitoso");
                     exit();
                 } else {
+                    $error = "Error al registrar el usuario. Por favor, intente de nuevo.";
                     require APP_ROOT.'views/error/error.php';
                 }
             }

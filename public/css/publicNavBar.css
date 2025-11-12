@@ -1,0 +1,155 @@
+
+.navbar {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #e0e0e0;
+    padding: 12px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo/Brand */
+.navbar-brand {
+    font-size: 24px;
+    font-weight: 700;
+    color: #00d4ff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: #00f0ff;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+/* Links container */
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.navbar-links a {
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 4px 0;
+}
+
+.navbar-links a:hover {
+    color: #00d4ff;
+}
+
+.navbar-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #00d4ff;
+    transition: width 0.3s ease;
+}
+
+.navbar-links a:hover::after {
+    width: 100%;
+}
+
+/* Right side container */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Login button */
+.btn-login {
+    background: linear-gradient(135deg, #0084ff 0%, #0066cc 100%);
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid #0052a3;
+    box-shadow: 0 2px 6px rgba(0, 132, 255, 0.3);
+}
+
+.btn-login:hover {
+    background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+    box-shadow: 0 4px 12px rgba(0, 132, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Register buttons (optional styling) */
+.btn-register {
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 6px 12px;
+}
+
+.btn-register:hover {
+    color: #00d4ff;
+    background: rgba(0, 212, 255, 0.1);
+    border-radius: 4px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .navbar-links {
+        gap: 12px;
+        width: 100%;
+        order: 3;
+    }
+
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    .navbar-links a {
+        font-size: 13px;
+    }
+
+    .navbar-right {
+        width: 100%;
+    }
+
+    .btn-login {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Active link state */
+.navbar-links a.active {
+    color: #00d4ff;
+}
+
+.navbar-links a.active::after {
+    width: 100%;
+}

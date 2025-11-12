@@ -15,11 +15,10 @@ class UserModel {
         $this->db_conn = $db_conn;
     }
 
-    public function getUserByCredentials($username){
+    public function getUserByCredentials($correo){
         try{
-            $stmt = $this->db_conn->prepare("SELECT u.username, u.lastname, u.user_role,u.user_status, u.user_password from users u
-                                    where u.username = :username");
-            $stmt->bindParam(':username', $username);
+            $stmt = $this->db_conn->prepare("SELECT id_usuario, nombre, apellido, correo, contrasenna, tipo_usuario, estado from usuarios where correo = :correo;");
+            $stmt->bindParam(':correo', $correo);
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             if($user){
@@ -104,11 +103,10 @@ class UserModel {
             $mail->Subject = 'Activacion de su cuenta en AventonesCR';
             $url_activacion = ROOT_PATH . "index.php?&action=activar&token=" . $token."&id=" . $idUsuario;
 
-            // 2. Inclusión del enlace en el cuerpo del correo
             $mail->Body = "Hola $nombreUsuario,<br><br>"
                         . " Su cuenta se encuentra en estado: Pendiente.<br>"
                         . "Por favor haga click en el siguiente enlace para activarla:<br><br>"
-                        . "<a href='$url_activacion'>**Activar mi Cuenta**</a><br><br>" // <--- Este es el enlace que presiona el usuario
+                        . "<a href='$url_activacion'>**Activar mi Cuenta**</a><br><br>" 
                         . "Si no puedes hacer clic, copia y pega la URL en tu navegador:<br>"
                         . "$url_activacion";
 

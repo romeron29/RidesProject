@@ -1,6 +1,6 @@
 <?php
 define('APP_ROOT', __DIR__ . '/');
-define('ROOT_PATH', 'https://expansively-brightish-eboni.ngrok-free.dev/first_project'.'/');
+define('ROOT_PATH', 'https://despina-nondistractive-envyingly.ngrok-free.dev/first_project'.'/');
 
 
 require_once __DIR__ . "/config/db.php";
@@ -10,10 +10,11 @@ $userController = new UserController($db_conn);
 $authController = new AuthController($db_conn);
 
     
-    $action = $_GET["action"] ?? "login";
+    $action = $_GET["action"] ?? "inicio_app";
     switch ($action) {
-        case "inicio":
-            require APP_ROOT."views/auth/login.php";
+        case "inicio_app":
+
+            require APP_ROOT."views/public/infoPublica.php";
             break;
         case "save":
             break;
@@ -48,8 +49,10 @@ $authController = new AuthController($db_conn);
             $authController->logout();
             break;
         case "login":
+            require APP_ROOT."views/auth/login.php";
+            break;
         default:
-            require APP_ROOT.'views/auth/login.php';
+            require APP_ROOT.'views/public/infoPublica.php';
             break;
     }
 ?>

@@ -47,3 +47,9 @@ input[type="text"], input[type="password"] {
     border-radius: 4px;
     box-sizing: border-box;
 }
+span.error {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background-color: #ccc;
+}

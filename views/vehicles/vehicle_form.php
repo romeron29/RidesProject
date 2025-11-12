@@ -30,7 +30,7 @@
     <label>Fotografía del vehículo:</label><br>
     <input type="file" name="foto_vehiculo"><br><br>
 
-    <input type="submit" value="Registrar Chofer">
+    <input type="submit" value="Registrar vehiculo">
   </form>
 
   <hr>

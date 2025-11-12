@@ -17,30 +17,27 @@
                 if ($user && password_verify($contrasenna, $user['contrasenna'])) {
                     if (($user['tipo_usuario'] == 'chofer' || $user['tipo_usuario'] == 'pasajero' || $user['tipo_usuario'] == 'administrador') && $user['estado'] != 'activo') {
                         $error = "Su cuenta se encuentra en estado: pendiente o inactivo.";
-                        require 'views/Login.php';
+                        require 'views/auth/login.php';
                         exit();
-                    }else if (($user['user_role'] == 'admin' || $user['user_role'] == 'user') && $user['user_status'] == 'active') {
+                    }else if (($user['tipo_usuario'] == 'adminstrador' || $user['tipo_usuario'] == 'chofer' || $user['tipo_usuario'] == 'pasajero') && $user['estado'] == 'activo') {
                         $_SESSION['loggedin'] = true;
                         $_SESSION['id_usuario'] = $user['id_usuario'];
                         $_SESSION['nombre'] = $user['nombre'];
                         $_SESSION['apellido'] = $user['apellido'];
                         $SESSION['correo'] = $user['correo'];
                         $_SESSION['tipo_usuario'] = $user['tipo_usuario'];
-                        $_SESSION['estado'] = $user['estado'];
-                        header("Location: index.php?action=list");
+                        $_SESSION['estado'] = $user['estado'];    
+                        require 'views/public/inicio.php';
                         exit();
-                    } else {
-                        $error = "Your account status does not allow login. Please contact the administrator.";
-                        require 'views/Login.php';
-                        exit();
-                    }
+                    } 
                 } else {
-                    $error = "Invalid username or password.";
-                    require 'views/Login.php';
+                    $error = "Usuario o contraseña invalido.";
+                    require 'views/auth/login.php';
                 }
-            } else {
-                $error = "Invalid username or password.";
-                require 'views/Login.php';
+            }else{
+                $error = "error post";
+                    require 'views/auth/login.php';
+                exit();
             }
         }
         public function logout() {
