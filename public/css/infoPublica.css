@@ -1,0 +1,144 @@
+/* Info Pública - Página de inicio */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+}
+
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 16px;
+}
+
+/* Hero section */
+.hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 16px;
+    color: #00d4ff;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 24px;
+    color: #b0b0b0;
+}
+
+/* Button group */
+.btn-group {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0084ff 0%, #0066cc 100%);
+    color: #fff;
+    border: 1px solid #0052a3;
+    box-shadow: 0 2px 6px rgba(0, 132, 255, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+    box-shadow: 0 4px 12px rgba(0, 132, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Features section */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.feature-card {
+    background: #fff;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    border-top: 3px solid transparent;
+}
+
+.feature-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+    border-top-color: #00d4ff;
+}
+
+.feature-card h3 {
+    color: #00d4ff;
+    margin-bottom: 12px;
+    font-size: 20px;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .hero {
+        padding: 40px 16px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .btn-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    main {
+        margin: 20px auto;
+    }
+}

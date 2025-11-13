@@ -21,9 +21,9 @@
 </head>
 <body>
 
-    <form action="procesar_ride.php" method="POST">
+    <form action="index.php?action=procesar_ride.php" method="POST">
         <h2>🚗 Crear Nuevo Ride</h2>
-
+        <input type="hidden" name="id_chofer" value="<?php echo $_SESSION['id_usuario']; ?>">
         <label for="nombre">Nombre del Ride / Ruta:</label>
         <input type="text" id="nombre" name="nombre" required placeholder="Ej: San José - Cartago (Tardes)">
 
@@ -35,8 +35,8 @@
 
         <hr>
 
-        <label for="dia">Día del Ride:</label>
-        <select id="dia" name="dia" required>
+        <label for="dia_semana">Día del Ride:</label>
+        <select id="dia_semana" name="dia_semana" required>
             <option value="" disabled selected>Seleccione un día</option>
             <option value="lunes">Lunes</option>
             <option value="martes">Martes</option>
@@ -56,7 +56,17 @@
         <input type="number" id="costo" name="costo_espacio" min="0" step="100" required placeholder="Ej: 1500">
 
         <label for="espacios">Cantidad de Espacios Disponibles:</label>
-        <input type="number" id="espacios" name="cantidad_espacios" min="1" required placeholder="Ej: 3">
+        <input type="number" id="espacios" name="espacios" min="1" max="20" required placeholder="Ej: 3">
+
+        <select name="id_vehiculo" id="id_vehiculo" required>
+            <option value="" disabled selected>Asigne vehiculo:</option>
+            <?php foreach($vehicles as $vehicle):?>
+                <option value="<?php echo $vehicle['id_vehiculo']?>">
+                    <?php echo htmlspecialchars($vehicle['placa'].' | '.$vehicle['marca'].' | '.$vehicle['modelo'].' | '.$vehicle['anno'].' | '.$vehicle['color'])?>
+                </option>";    
+            <?php endforeach;?>
+        </select>
+
 
         <button type="submit">Crear Ride</button>
     </form>

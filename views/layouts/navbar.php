@@ -1,28 +1,35 @@
 <?php
+require_once APP_ROOT."config/constants.php";
 if (session_status() === PHP_SESSION_NONE) {
 	session_start();
 }
-// Simple authenticated navbar: shows basic links and a logout action
+// Authenticated navbar that reuses publicNavBar.css classes
 ?>
-<nav style="background:#333;color:#fff;padding:8px 12px;">
-	<div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
-		<div>
-			<a href="/" style="color:#fff;text-decoration:none;font-weight:bold;margin-right:16px;">MiApp</a>
-			<a href="?action=list" style="color:#ddd;text-decoration:none;margin-right:12px;">Usuarios</a>
-			<a href="?action=rides" style="color:#ddd;text-decoration:none;margin-right:12px;">Viajes</a>
-			<a href="?action=reservations" style="color:#ddd;text-decoration:none;margin-right:12px;">Reservas</a>
-			<?php if (!empty($_SESSION['user_role']) && strtolower($_SESSION['user_role']) === 'admin'): ?>
-				<!-- Admin-only links -->
-				<a href="?action=registrar&role=admin" style="color:#ffd9b3;text-decoration:none;margin-right:12px;">Crear administrador</a>
-				<a href="?action=list" style="color:#ffd9b3;text-decoration:none;margin-right:12px;">Administrar usuarios</a>
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>public/css/publicNavBar.css">
+<nav class="navbar">
+	<div class="navbar-container">
+		<a href="index.php" class="navbar-brand">Aventones</a>
+		<div class="navbar-links">
+
+			<?php if (!empty($_SESSION['tipo_usuario']) && strtolower($_SESSION['tipo_usuario']) === 'chofer'): ?>
+				<a href="?action=misViajes" class="btn-register">Mis Viajes</a>
+
+			<?php endif; ?>
+
+			<a href="?action=list" class="btn-register">Usuarios</a>
+			<a href="?action=rides" class="btn-register">Viajes</a>
+			<a href="?action=ventanaReserva" class="btn-register">Reservas</a>
+			<?php if (!empty($_SESSION['tipo_usuario']) && strtolower($_SESSION['tipo_usuario']) === 'administrador'): ?>
+				<a href="?action=registro&role=admin" class="btn-register">Crear administrador</a>
+				<a href="?action=list" class="btn-register">Administrar usuarios</a>
 			<?php endif; ?>
 		</div>
-		<div>
+		<div class="navbar-right">
 			<?php if (!empty($_SESSION['loggedin'])): ?>
-				<span style="color:#bbb;margin-right:12px;">Hola, <?= htmlspecialchars($_SESSION['username'] ?? 'usuario') ?></span>
-				<a href="?action=logout" style="color:#fff;text-decoration:none;background:#c0392b;padding:6px 10px;border-radius:4px;">Cerrar sesión</a>
+				<span style="color:#bbb;margin-right:12px;">Hola, <?= htmlspecialchars($_SESSION['nombre'] ?? 'usuario') ?></span>
+				<a href="?action=logout" class="btn-logout">Cerrar sesión</a>
 			<?php else: ?>
-				<a href="?action=login" style="color:#fff;text-decoration:none;margin-right:8px;">Iniciar sesión</a>
+				<a href="?action=login" class="btn-login">Iniciar sesión</a>
 			<?php endif; ?>
 		</div>
 	</div>

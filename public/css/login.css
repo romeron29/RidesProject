@@ -1,129 +1,234 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.error{
-  color: aliceblue;
-}
-.form-container {
-  width: 100%;
-  height: 100vh;
+/* Login Styles - Paleta de colores consistente (infoPublica, registroForms) */
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #141414;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+body {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Contenedor del formulario */
+.form-container {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .form {
-  width: 25em;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding-left: 2em;
-  padding-right: 2em;
-  padding-bottom: 0.4em;
-  background-color: #171717;
-  border-radius: 25px;
-  transition: .4s ease-in-out;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    border-top: 4px solid #00d4ff;
+    box-shadow: 0 12px 48px rgba(0, 212, 255, 0.2);
+    transition: all 0.3s ease;
 }
 
 .form:hover {
-  transform: scale(1.05);
-  border: 1px solid black;
+    box-shadow: 0 16px 56px rgba(0, 212, 255, 0.25);
 }
 
+/* Heading */
 #heading {
-  text-align: center;
-  margin: 2em;
-  color: rgb(255, 255, 255);
-  font-size: 1.2em;
+    text-align: center;
+    margin: 0 0 16px 0;
+    color: #1a1a1a;
+    font-size: 28px;
+    font-weight: 700;
 }
 
+/* Mensaje de error */
+.error {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    color: #856404;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+/* Fields */
 .field {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5em;
-  border-radius: 25px;
-  padding: 0.6em;
-  border: none;
-  outline: none;
-  color: white;
-  background-color: #171717;
-  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 8px;
+    padding: 0 14px;
+    border: 2px solid #e0e0e0;
+    outline: none;
+    background-color: #f9f9f9;
+    height: 48px;
+    transition: all 0.3s ease;
 }
 
+.field:focus-within {
+    border-color: #00d4ff;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+}
+
+/* Input Icon */
 .input-icon {
-  height: 1.3em;
-  width: 1.3em;
-  fill: white;
+    height: 18px;
+    width: 18px;
+    fill: #999;
+    flex-shrink: 0;
+    transition: fill 0.3s ease;
 }
 
+.field:focus-within .input-icon {
+    fill: #00d4ff;
+}
+
+/* Input Field */
 .input-field {
-  background: none;
-  border: none;
-  outline: none;
-  width: 100%;
-  color: #d3d3d3;
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: #1a1a1a;
+    font-size: 15px;
+    font-family: inherit;
 }
 
-.form .btn {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  margin-top: 2.5em;
+.input-field::placeholder {
+    color: #999;
+}
+
+/* Botones */
+.btn {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 12px;
+    margin-top: 16px;
 }
 
 .button1 {
-  padding: 0.5em;
-  padding-left: 1.1em;
-  padding-right: 1.1em;
-  border-radius: 5px;
-  margin-right: 0.5em;
-  border: none;
-  outline: none;
-  transition: .4s ease-in-out;
-  background-color: #252525;
-  color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #0084ff 0%, #0066cc 100%);
+    color: #fff;
+    border: 1px solid #0052a3;
+    box-shadow: 0 2px 6px rgba(0, 132, 255, 0.3);
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    flex: 1;
+    font-size: 15px;
 }
 
 .button1:hover {
-  background-color: black;
-  color: white;
+    background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+    box-shadow: 0 4px 12px rgba(0, 132, 255, 0.5);
+    transform: translateY(-2px);
 }
 
+.button1:active {
+    transform: translateY(0);
+}
+
+/* Sign Up button */
 .button2 {
-  text-decoration: none;
-  padding: 0.5em;
-  padding-left: 2.3em;
-  padding-right: 2.3em;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  transition: .4s ease-in-out;
-  background-color: #252525;
-  color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #f0f0f0;
+    color: #1a1a1a;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    flex: 1;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .button2:hover {
-  background-color: black;
-  color: white;
+    background-color: #e8e8e8;
+    border-color: #d0d0d0;
 }
 
+/* Forgot Password button */
 .button3 {
-  margin-bottom: 3em;
-  padding: 0.5em;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  transition: .4s ease-in-out;
-  background-color: #252525;
-  color: white;
+    margin-bottom: 0;
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    color: #0084ff;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    text-decoration: none;
 }
 
 .button3:hover {
-  background-color: red;
-  color: white;
+    color: #0066cc;
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .form {
+        padding: 30px 20px;
+        gap: 16px;
+    }
+
+    #heading {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+
+    .btn {
+        flex-direction: column;
+        margin-top: 12px;
+        gap: 10px;
+    }
+
+    .button1,
+    .button2 {
+        width: 100%;
+    }
+
+    .field {
+        height: 44px;
+        padding: 0 12px;
+        gap: 10px;
+    }
+
+    .input-icon {
+        height: 16px;
+        width: 16px;
+    }
+
+    .input-field {
+        font-size: 14px;
+    }
 }

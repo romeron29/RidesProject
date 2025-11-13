@@ -1,0 +1,29 @@
+/* Vehicle form styles - import shared registroForms palette and add vehicle-specific tweaks */
+@import url('registroForms.css');
+
+/* vehicle-specific tweaks */
+.form-container .vehicle-note {
+    margin-bottom: 16px;
+    color: #555;
+    font-size: 14px;
+    background: rgba(0,212,255,0.04);
+    padding: 10px 12px;
+    border-left: 4px solid #00d4ff;
+    border-radius: 4px;
+}
+
+/* smaller inputs for numeric fields */
+input[type="number"] {
+    max-width: 220px;
+}
+
+/* image preview placeholder */
+.vehicle-photo-preview {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    display: block;
+    margin-top: 8px;
+    border-radius: 6px;
+    border: 1px solid #e6f7ff;
+}

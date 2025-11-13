@@ -26,8 +26,15 @@
                         $_SESSION['apellido'] = $user['apellido'];
                         $SESSION['correo'] = $user['correo'];
                         $_SESSION['tipo_usuario'] = $user['tipo_usuario'];
-                        $_SESSION['estado'] = $user['estado'];    
-                        require 'views/public/inicio.php';
+                        $_SESSION['estado'] = $user['estado'];  
+
+                        if($user['tipo_usuario'] == 'administrador') {
+                            require 'views/admin/dashboard.php';
+                        }else if($user['tipo_usuario'] == 'chofer'){
+                            require 'views/driver/mainDriver.php';    }
+                        else{
+                            require 'views/passenger/reservations.php';
+                        }
                         exit();
                     } 
                 } else {
@@ -50,7 +57,7 @@
             );
         }
         session_destroy();
-        header("Location: index.php?action=login");
+        header("Location: index.php?action=inicio_app");
         exit();
         }
     }

@@ -1,0 +1,351 @@
+/* Rides Display Styles - Tarjetas de viajes disponibles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+}
+
+header {
+    flex-shrink: 0;
+}
+
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 16px;
+    min-height: calc(100vh - 200px);
+}
+
+/* Sección de viajes */
+.rides-section {
+    width: 100%;
+}
+
+.rides-header {
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.rides-header h1 {
+    color: #1a1a1a;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.rides-header p {
+    color: #666;
+    font-size: 16px;
+}
+
+/* Grid de tarjetas */
+.rides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+/* Tarjeta de viaje */
+.ride-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border-top: 4px solid #00d4ff;
+    display: flex;
+    flex-direction: column;
+}
+
+.ride-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.15);
+    transform: translateY(-4px);
+}
+
+/* Header de la tarjeta */
+.ride-card-header {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #fff;
+    padding: 20px;
+    border-bottom: 2px solid #00d4ff;
+}
+
+.ride-driver-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: #00d4ff;
+}
+
+.ride-route {
+    font-size: 14px;
+    color: #bbb;
+    margin: 0;
+}
+
+.ride-route strong {
+    color: #fff;
+}
+
+/* Contenido de la tarjeta */
+.ride-card-body {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Grupos de información */
+.ride-info-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.ride-info-item {
+    padding: 12px;
+    background: #f9f9f9;
+    border-radius: 6px;
+    border-left: 3px solid #00d4ff;
+}
+
+.ride-info-label {
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.ride-info-value {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+/* Sección de vehículo */
+.ride-vehicle-section {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.ride-vehicle-title {
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.vehicle-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+}
+
+.vehicle-spec {
+    background: rgba(0, 212, 255, 0.05);
+    padding: 8px;
+    border-radius: 4px;
+    border-left: 2px solid #00d4ff;
+}
+
+.vehicle-spec-label {
+    font-size: 11px;
+    color: #666;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.vehicle-spec-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+/* Precio y botón */
+.ride-card-footer {
+    padding: 16px 20px;
+    border-top: 1px solid #e0e0e0;
+    background: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.ride-price {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.ride-price-label {
+    font-size: 11px;
+    color: #999;
+    text-transform: uppercase;
+}
+
+.ride-price-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #00d4ff;
+}
+
+.ride-btn-reserve {
+    flex: 1;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #0084ff 0%, #0066cc 100%);
+    color: #fff;
+    border: 1px solid #0052a3;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.ride-btn-reserve:hover {
+    background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+    box-shadow: 0 4px 12px rgba(0, 132, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Estado de espacios */
+.ride-spaces-status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.spaces-available {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.spaces-low {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.spaces-full {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Mensaje sin viajes */
+.no-rides {
+    text-align: center;
+    padding: 60px 20px;
+    background: #fff;
+    border-radius: 12px;
+    border: 2px dashed #e0e0e0;
+    color: #666;
+}
+
+.no-rides h2 {
+    color: #1a1a1a;
+    margin-bottom: 8px;
+    font-size: 24px;
+}
+
+.no-rides p {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+/* Footer */
+footer {
+    background: #1a1a1a;
+    color: #b0b0b0;
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 12px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    main {
+        margin: 20px auto;
+    }
+
+    .rides-header h1 {
+        font-size: 24px;
+    }
+
+    .rides-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .ride-info-group {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .vehicle-specs {
+        grid-template-columns: 1fr;
+    }
+
+    .ride-card-footer {
+        flex-direction: column;
+    }
+
+    .ride-btn-reserve {
+        width: 100%;
+    }
+
+    .ride-price {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+}
+
+/* Animación de carga */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ride-card {
+    animation: fadeIn 0.4s ease-out;
+}
+
+.ride-card:nth-child(1) { animation-delay: 0.05s; }
+.ride-card:nth-child(2) { animation-delay: 0.1s; }
+.ride-card:nth-child(3) { animation-delay: 0.15s; }
+.ride-card:nth-child(4) { animation-delay: 0.2s; }
+.ride-card:nth-child(n+5) { animation-delay: 0.25s; }
