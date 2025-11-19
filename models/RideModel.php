@@ -37,13 +37,38 @@ class RideModel {
 
     public function getPublicInfoRides(){
         try {
-            $stmt = $this->db_conn->prepare("SELECT r.nombre, r.lugar_salida, r.lugar_llegada, r.dia_semana, r.hora, r.costo_espacio, r.espacios, v.modelo, v.anno, v.marca from rides r
+            $stmt = $this->db_conn->prepare("SELECT r.id_ride, r.nombre, r.lugar_salida, r.lugar_llegada, r.dia_semana, r.hora, r.costo_espacio, r.espacios, v.modelo, v.anno, v.marca from rides r
             inner join vehiculos v on r.id_vehiculo = v.id_vehiculo
             order by dia_semana, hora  asc;");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             die("Error listing rides: " . $e->getMessage());
+        }
+    }
+
+    public function getFilteredRides($sort_by, $order_by) {
+        try {
+            $allowedSortBy = ['dia_semana', 'lugar_salida', 'lugar_llegada'];
+            $allowedOrderBy = ['asc', 'desc'];
+
+            if (!in_array($sort_by, $allowedSortBy)) {
+                $sort_by = 'dia_semana';
+            }
+            if (!in_array($order_by, $allowedOrderBy)) {
+                $order_by = 'ASC';
+            }
+
+            $query = "SELECT r.id_ride, r.nombre, r.lugar_salida, r.lugar_llegada, r.dia_semana, r.hora, r.costo_espacio, r.espacios, v.modelo, v.anno, v.marca 
+                      FROM rides r
+                      INNER JOIN vehiculos v ON r.id_vehiculo = v.id_vehiculo
+                      ORDER BY $sort_by $order_by;";
+
+            $stmt = $this->db_conn->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die("Error filtering rides: " . $e->getMessage());
         }
     }
 

@@ -1,0 +1,95 @@
+/* Admin Navbar Styles - dark palette with cyan accents */
+
+.navbar.admin {
+  background: linear-gradient(90deg,#1a1a1a 0%, #232323 100%);
+  border-bottom: 1px solid rgba(0,212,255,0.06);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+  position: sticky;
+  top: 0;
+  z-index: 900;
+}
+
+.navbar.admin .navbar-container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.navbar.admin .navbar-brand{
+  color: #00d4ff;
+  font-weight:800;
+  font-size:20px;
+  text-decoration:none;
+}
+
+.navbar.admin .navbar-links{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.navbar.admin .navbar-links a{
+  color:#e6f7ff;
+  background:transparent;
+  padding:8px 12px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:700;
+  transition: all 0.15s ease;
+  border:1px solid transparent;
+}
+
+.navbar.admin .navbar-links a:hover{
+  background: rgba(0,212,255,0.06);
+  border-color: rgba(0,212,255,0.12);
+  color:#00d4ff;
+}
+
+.navbar.admin .btn-register{
+  background: linear-gradient(135deg,#0084ff 0%,#0066cc 100%);
+  color: #fff;
+  padding:8px 12px;
+  border-radius:8px;
+  border:1px solid rgba(0,82,163,0.12);
+}
+
+.navbar.admin .navbar-right{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.navbar.admin .navbar-right span{
+  color:#cfdfea;
+  font-weight:600;
+}
+
+.navbar.admin .btn-login, .navbar.admin .btn-logout{
+  padding:8px 12px;
+  border-radius:8px;
+  font-weight:700;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+.navbar.admin .btn-login{
+  background: transparent;
+  color: #00d4ff;
+  border: 1px solid rgba(0,212,255,0.14);
+}
+
+.navbar.admin .btn-logout{
+  background: linear-gradient(135deg,#ff6b6b 0%,#d32f2f 100%);
+  color:#fff;
+  border:1px solid rgba(211,47,47,0.14);
+}
+
+@media (max-width:768px){
+  .navbar.admin .navbar-container{padding:8px 12px;flex-direction:column;align-items:flex-start;}
+  .navbar.admin .navbar-links{width:100%;justify-content:space-between;}
+  .navbar.admin .navbar-right{width:100%;justify-content:space-between;margin-top:8px;}
+}

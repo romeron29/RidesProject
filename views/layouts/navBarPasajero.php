@@ -9,8 +9,8 @@ if (session_status() === PHP_SESSION_NONE) {
 	<div class="navbar-container">
 		<a href="index.php" class="navbar-brand">Aventones</a>
 		<div class="navbar-links">
-			<a href="index.php?action=rides" class="btn-register">Ver viajes</a>
-			<a href="index.php?action=ventanaReserva" class="btn-register">Mis reservas</a>
+			<a href="index.php?action=viajes_disponibles" class="btn-register">Ver viajes disponibles</a>
+			<a href="index.php?action=reservas_pasajero&id_usuario=<?php echo $_SESSION['id_usuario']?>" class="btn-register">Mis reservas</a>
 		</div>
 		<div class="navbar-right">
 			<?php if (!empty($_SESSION['nombre'])): ?>

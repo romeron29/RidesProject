@@ -35,7 +35,6 @@ require_once APP_ROOT."config/constants.php";
                 <button type="submit" class="button1">Iniciar Sesión</button>
                 <a class="button2" href="index.php?action=registro">Registrarse</a>
             </div>
-            
             <button class="button3" type="button" onclick="alert('Función en desarrollo')">¿Olvidaste tu contraseña?</button>
         </form>
     </div>

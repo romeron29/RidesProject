@@ -11,6 +11,7 @@ if (session_status() === PHP_SESSION_NONE) {
 		<div class="navbar-links">
 			<a href="index.php?action=list_vehiculos" class="btn-register">Mis vehículos</a>
 			<a href="index.php?action=list_viajes" class="btn-register">Mis viajes</a>
+			<a href="index.php?action=reservas_chofer&id_usuario=<?php echo $_SESSION['id_usuario']?>" class="btn-register">Mis Reservas</a>
 		</div>
 		<div class="navbar-right">
 			<?php if (!empty($_SESSION['nombre'])): ?>

@@ -27,7 +27,12 @@ class RideController {
             require APP_ROOT.'views/public/infoPublica.php'; 
         }
     }
-
+    
+    public function getFilteredRides($sort_by, $order_by) {
+        $rideModel = new RideModel(db_conn: $this->db_conn);
+        $rides = $rideModel->getFilteredRides($sort_by, $order_by);
+        require APP_ROOT.'views/public/publica.php';
+    }
 
     public function saveRide() {
         /*
@@ -56,7 +61,7 @@ costo_espacio, espacios) values()
                     require APP_ROOT.'views/error/error.php';
                 }
             }
-        } else {
+        } else { 
             require APP_ROOT.'views/error/error.php';
         }
     }

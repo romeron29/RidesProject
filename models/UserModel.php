@@ -164,9 +164,7 @@ class UserModel {
 
     public function listUsers() {
         try {
-            $stmt = $this->db_conn->prepare("SELECT u.user_id, u.username AS name, u.lastname, u.second_lastname, p.province_name, u.user_status
-                                              FROM users u 
-                                              JOIN provinces p ON u.province_id = p.province_number order by user_id asc;");
+            $stmt = $this->db_conn->prepare("SELECT id_usuario, nombre, apellido, correo, contrasenna, tipo_usuario, estado, fecha_creacion from usuarios");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
@@ -188,11 +186,20 @@ class UserModel {
     public function disableUser($userId) {
         try {
             echo 'cambiando estado';
-            $stmt = $this->db_conn->prepare("UPDATE users SET user_status = 'inactive' WHERE user_id = :user_id");
-            $stmt->bindParam(':user_id', $userId);
+            $stmt = $this->db_conn->prepare("UPDATE usuarios SET estado = 'inactivo' WHERE id_usuario = :id_usuario");
+            $stmt->bindParam(':id_usuario', $userId);
             return $stmt->execute();
         } catch (PDOException $e) {
             die("Error disabling user: " . $e->getMessage());
+        }
+    }
+    public function enableUser($userId) {
+        try {
+            $stmt = $this->db_conn->prepare("UPDATE usuarios SET estado = 'activo' WHERE id_usuario = :id_usuario");
+            $stmt->bindParam(':id_usuario', $userId);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            die("Error enabling user: " . $e->getMessage());
         }
     }
 

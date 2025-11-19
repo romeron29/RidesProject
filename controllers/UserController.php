@@ -76,11 +76,26 @@ class UserController {
     }
     public function disableUser() {
         echo 'entra en disable';
-        if (isset($_GET['user_id'])) {
+        if (isset($_GET['id_usuario'])) {
             $userModel = new UserModel($this->db_conn);
-            $userId = $_GET['user_id'] ?? null;
+            $userId = $_GET['id_usuario'] ?? null;
             if($userModel->disableUser($userId) == true) {
-                header("Location: index.php?action=list");
+                header("Location: index.php?action=list_usuarios");
+                exit();
+            } else {
+                require 'views/Error.php';
+            }
+        } else {
+            require 'views/Error.php';
+        }
+    }
+
+    public function enableUser() {
+        if (isset($_GET['id_usuario'])) {
+            $userModel = new UserModel($this->db_conn);
+            $userId = $_GET['id_usuario'] ?? null;
+            if($userModel->enableUser($userId) == true) {
+                header("Location: index.php?action=list_usuarios");
                 exit();
             } else {
                 require 'views/Error.php';
@@ -93,7 +108,7 @@ class UserController {
     public function listUsers() {
         $model = new UserModel($this->db_conn);
         $users = $model->listUsers();
-        require 'views/User_list.php';
+        require 'views/users/list_user.php';
     }
 
 

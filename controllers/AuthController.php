@@ -19,7 +19,7 @@
                         $error = "Su cuenta se encuentra en estado: pendiente o inactivo.";
                         require 'views/auth/login.php';
                         exit();
-                    }else if (($user['tipo_usuario'] == 'adminstrador' || $user['tipo_usuario'] == 'chofer' || $user['tipo_usuario'] == 'pasajero') && $user['estado'] == 'activo') {
+                    }else if (($user['tipo_usuario'] == 'administrador' || $user['tipo_usuario'] == 'chofer' || $user['tipo_usuario'] == 'pasajero') && $user['estado'] == 'activo') {
                         $_SESSION['loggedin'] = true;
                         $_SESSION['id_usuario'] = $user['id_usuario'];
                         $_SESSION['nombre'] = $user['nombre'];
@@ -29,11 +29,11 @@
                         $_SESSION['estado'] = $user['estado'];  
 
                         if($user['tipo_usuario'] == 'administrador') {
-                            require 'views/admin/dashboard.php';
+                            header('Location: index.php?action=list_usuarios');
                         }else if($user['tipo_usuario'] == 'chofer'){
                             require 'views/driver/mainDriver.php';    }
                         else{
-                            require 'views/passenger/reservations.php';
+                            header("Location: index.php?action=viajes_inicio");
                         }
                         exit();
                     } 
